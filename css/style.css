@@ -43,7 +43,7 @@ span {
     font-size: 15px;
 }
 
-#self {
+.self {
     padding: 10px;
     display: flex;
     justify-content: right;
@@ -109,4 +109,12 @@ span {
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
+}
+.conteudo_eu{
+    padding: 7px 10px;
+    text-align: right;
+}
+.conteudo{
+    padding: 7px 10px;
+    text-align: left;
 }

@@ -1,13 +1,29 @@
+while (true) {
+    var nomeUsuario = prompt("Digite seu nome");
+    if (nomeUsuario == null) {
+            alert("Porfavor, digite um nome")
+        }
+        else{
+            break;
+        }
+    }
+
 var input = document.getElementById("msg");
-        input.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
+
+var button = document.getElementById("send");
+var delete_button = document.getElementById("delete")
+        button.addEventListener("click", function (event) {
+            if (input.value != ""){
                 enviarMSG();
             }
         });
-var button = document.getElementById("send");
-        button.addEventListener("click", function (event) {
-            enviarMSG();
-        });
+        addEventListener("keypress", function (event) {
+            if (event.key === "Enter"){
+                if (input.value != ""){
+                    enviarMSG();
+                }
+        }
+    });
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
         import { getDatabase, ref, set, push, remove, onValue } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
@@ -28,16 +44,6 @@ var button = document.getElementById("send");
         const dbRef = ref(db, 'exemplo');
 
         var meuhtml = "";
-
-        while (true) {
-        var nomeUsuario = prompt("Digite seu nome");
-        if (nomeUsuario == null) {
-                alert("Porfavor, digite um nome")
-            }
-            else{
-                break;
-            }
-        }
 
         function enviarMSG() {
 
@@ -66,10 +72,10 @@ var button = document.getElementById("send");
                 console.log(childSnapshot.val().hora)
                 
                 if (nomeUsuario == childSnapshot.val().nome) {
-                    meuhtml += '<div class="self">' + childSnapshot.val().nome + ' às '+ childSnapshot.val().horario +'</b></div> </i></b><span>' + childSnapshot.val().mensagem + '</span></div>';        
+                    meuhtml += '<div class="msg"><div class="self"><div class="conteudo_eu">' + childSnapshot.val().nome + ' às '+ childSnapshot.val().horario +'</b> </i></b><span></br>' + childSnapshot.val().mensagem + '</span></div></div></div>';        
                 }
                 else{
-                    meuhtml += '<div class="msg">' + childSnapshot.val().nome + ' -> '+ childSnapshot.val().horario +'</b></div> </i></b><span>' + childSnapshot.val().mensagem + '</span></div>';        
+                    meuhtml += '<div class="msg"><div class="other"><div class="conteudo">' + childSnapshot.val().nome + ' às '+ childSnapshot.val().horario +'</b> </i></b><span></br>' + childSnapshot.val().mensagem + '</span></div></div></div>';
                 }
 
                 
